@@ -1,36 +1,34 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { View, Text, StyleSheet } from 'react-native';
+import { Button } from 'react-native-paper';
 import * as React from 'react';
-import Header from './Header';
-
-import { Card } from 'react-native-paper';
-
+import { LinearGradient } from 'expo-linear-gradient';
 import { useAtom } from 'jotai';
-
 import { emailAtom } from './Login';
 
-const Screen1 = ({ navigation }) => {
+const Screen0 = ({ navigation }) => {
   const [qualquerCoisa, setQualquerCoisa] = useAtom(emailAtom);
 
   return (
-    <>
-      <View style={estilos.container}>
-        <Text style={estilos.titulo}>Seja Bem-Vindo,</Text>
-        <Text>{qualquerCoisa[0]}</Text>
-        <Text>{qualquerCoisa[1]}</Text>
-        
-        <Button
-          style={estilos.botao}
-          icon="logout"
-          mode="contained"
-          onPress={() => {
-            setQualquerCoisa(['', '']);
-            navigation.navigate('Login');
-          }}>
-          Voltar
-        </Button>
-      </View>
-    </>
+    <LinearGradient 
+      colors={['#3E01A2', 'purple']} 
+      start={{ x: 0, y: 1 }} 
+      end={{ x: 0, y: 0 }} 
+      style={estilos.container}
+    >
+      <Text style={estilos.titulo}>Seja Bem-Vindo,</Text>
+      <Text style={{color: 'white'}}>{qualquerCoisa[0]}</Text>
+      
+      <Button
+        style={estilos.botao}
+        icon="logout"
+        mode="contained"
+        onPress={() => {
+          setQualquerCoisa(['', '']);
+          navigation.navigate('Login');
+        }}>
+        Voltar
+      </Button>
+    </LinearGradient>
   );
 };
 
@@ -39,7 +37,6 @@ const estilos = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'linear-gradient(to top, #3E01A2, purple)',
   },
   botao: {
     margin: 30,
@@ -50,18 +47,6 @@ const estilos = StyleSheet.create({
     marginBottom: 20,
     color:'white'
   },
-  img: {
-    flex: 1,
-  },
-  card: {
-    margin: 10,
-    height: 70,
-    width: 70,
-  },
-  containerCards: {
-    flex: 1,
-    flexDirection: 'row',
-  },
 });
 
-export default Screen1;
+export default Screen0;
