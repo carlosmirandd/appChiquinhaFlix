@@ -1,33 +1,36 @@
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import * as React from 'react';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { atom, useAtom } from 'jotai';
 export const emailAtom = atom(['', '']);
-
-
 
 const Login = ({ navigation }) => {
   const [pwToggle, setpwToggle] = React.useState(true);
   const [email, setEmail] = useAtom(emailAtom);
 
   return (
-    <View style={estilos.container}>
+    <LinearGradient 
+      colors={['#000000', 'purple']} 
+      start={{ x: 0, y: 1 }} 
+      end={{ x: 0, y: 0 }} 
+      style={estilos.container}
+    >
       <Image source={require('./logo2.png')} style={estilos.logo} />
       <Text style={estilos.titulo}>Faça Login</Text>
-      
-      
       
       <TextInput
         mode="outlined"
         label="Nome de Usuário"
         right={<TextInput.Icon icon="" />}
-        onChange={(callback) => setEmail([callback.target.value, email[1]])}
+        onChangeText={(text) => setEmail([text, email[1]])}
         value={email[0]}
         style={estilos.caixaDeTexto}
       />
 
-      <Text>{email}</Text>
+      <Text style={{color: 'white'}}>{email[0]}</Text>
+      
       <TextInput
         mode="outlined"
         label="Senha"
@@ -35,7 +38,7 @@ const Login = ({ navigation }) => {
         right={
           <TextInput.Icon icon="eye" onPress={() => setpwToggle(!pwToggle)} />
         }
-        onChange={(callback) => setEmail([email[0], callback.target.value])}
+        onChangeText={(text) => setEmail([email[0], text])}
         value={email[1]}
         style={estilos.caixaDeTexto}
       />
@@ -47,7 +50,7 @@ const Login = ({ navigation }) => {
         onPress={() => navigation.navigate('Logado')}>
         Entrar
       </Button>
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -56,7 +59,6 @@ const estilos = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundImage: 'linear-gradient(to top, #000000, purple)',
   },
   botao: {
     marginTop: 30,
@@ -77,4 +79,3 @@ const estilos = StyleSheet.create({
 });
 
 export default Login;
-
