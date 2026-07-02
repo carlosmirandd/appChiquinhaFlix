@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "trabalhoaplicativos",
+    "name": "chiquinhaflix",
     "slug": "snack-fdf0572a-ebe0-4e80-ad60-080a9ba75c48",
+    "owner": "mirandw",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -30,6 +31,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "https://callstack.github.io/react-native-paper/appbar-content.html"
+    "extra": {
+      "eas": {
+        "projectId": "fae3862d-b3ea-4f36-abdc-a771f8ccce6b"
+      }
+    },
+    "description": "https://github.io"
   }
 }
